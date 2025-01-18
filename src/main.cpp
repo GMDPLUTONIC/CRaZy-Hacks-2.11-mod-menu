@@ -97,6 +97,18 @@ void RenderMain() {
                 gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have DISABLED Noclip!")->show();
                 }
         }
+
+        if (ImGui::Checkbox("Noclip Fix", &noclipFix)) {
+            if (noclipFix) {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\xe9\x13\x02\x00\x00\x90", 6, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\xe9\x22\x01\x00\x00\x90", 6, NULL);
+                gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have ENABLED Noclip Fix!")->show();
+            } else {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\x0f\x84\x12\x02\x00\x00", 6, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\x0f\x8B\x21\x01\x00\x00", 6, NULL);
+                gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have DISABLED Noclip Fix!")->show();
+                }
+        }
         
         if (ImGui::Checkbox("Everything Kills You", &everythingKillsYou)) {
             if (everythingKillsYou) {

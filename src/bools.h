@@ -6,6 +6,7 @@ bool anyChar;
 bool unlimitedText;
 bool songDownloadBypass;
 bool noclip;
+bool noclipFix;
 bool everythingKillsYou;
 bool itsAllBlocks;
 bool theresNoEscape;
