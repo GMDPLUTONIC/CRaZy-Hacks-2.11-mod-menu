@@ -72,20 +72,6 @@ void RenderMain() {
                 }
         }
 
-        if (ImGui::Checkbox("Copy Hack", &copyHack)) {
-            if (copyHack) {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x179B8E), "\x90\x90", 2, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176F5C), "\x8b\xca\x90", 3, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176FE5), "\xb0\x01\x90", 3, NULL);
-                gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have ENABLED Copy Hack!")->show();
-            } else {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x179B8E), "\x75\x0e", 2, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176F5C), "\x0f\x44\xca", 3, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176FE5), "\x0f\x95\xc0", 3, NULL);
-                gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have DISABLED Copy Hack!")->show();
-                }
-        }
-
         if (ImGui::Checkbox("Icon Hack", &iconHack)) {
             if (iconHack) {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0xC50A8), "\xb0\x01\x90\x90\x90", 5, NULL);
@@ -233,6 +219,20 @@ void RenderMain() {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x2E67A4), "\x00\x60\x6A\x48", 4, NULL);
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x8FA4D), "\x80\x67\x6a\x48", 4, NULL);
                 gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have DISABLED Longer Editor!")->show();
+                }
+        }
+
+        if (ImGui::Checkbox("Copy Hack", &copyHack)) {
+            if (copyHack) {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x179B8E), "\x90\x90", 2, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176F5C), "\x8b\xca\x90", 3, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176FE5), "\xb0\x01\x90", 3, NULL);
+                gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have ENABLED Copy Hack!")->show();
+            } else {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x179B8E), "\x75\x0e", 2, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176F5C), "\x0f\x44\xca", 3, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176FE5), "\x0f\x95\xc0", 3, NULL);
+                gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1", "Close", nullptr, "You Have DISABLED Copy Hack!")->show();
                 }
         }
         
