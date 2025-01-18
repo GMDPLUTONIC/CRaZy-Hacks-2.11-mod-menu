@@ -1,4 +1,39 @@
-# Custom UI Menu (Part 3)
-This episode explains how you can create your own UI similar to Mega Hack v7/v8. This also uses **Visual Studio Code** and CMake** instead of using **Visual Studio**
+## CRaZy HaX V1
 
-Will add more to this desc in the future
+*Features:*
+
+**GLOBAL:**
+
+- Unlimited Slider
+
+- Any Character
+
+- Unlimited Text
+
+- Icon Hack
+
+**LEVEL:**
+
+- Noclip
+
+- Everything Kills You
+
+- ITS ALL BLOCKS
+
+- Theres No Escape
+
+- Accurate Percentage
+
+**CREATOR:**
+
+- No Editor Kick
+
+- Unlimited Objects
+
+- Verify Hack
+
+- Every Song
+
+- Longer Editor
+
+- Copy Hack
