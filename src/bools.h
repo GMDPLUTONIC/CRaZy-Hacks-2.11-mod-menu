@@ -1,6 +1,7 @@
 #pragma once
 
 bool menu;
+bool noAntiCheat;
 bool unlimitedSlider;
 bool anyChar;
 bool unlimitedText;
@@ -18,5 +19,4 @@ bool verifyHack;
 bool everySong;
 bool longerEditor;
 bool accuratePercentage;
-bool speedhack;
 static float fSpeed;

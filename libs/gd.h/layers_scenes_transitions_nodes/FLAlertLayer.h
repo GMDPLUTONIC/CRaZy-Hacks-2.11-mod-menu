@@ -106,7 +106,7 @@ namespace gd {
 			* g - green
 			* y - yellow
 			* o - orange
-			* and more that i'm too lazy to find.
+			* p - pink
 			* MAKE SURE YOU FOLLOW THIS FORMAT. ROB'S PARSING CAN AND WILL MESS UP OTHERWISE.
 			*/
 		static FLAlertLayer* create(FLAlertLayerProtocol* target, const char* title,

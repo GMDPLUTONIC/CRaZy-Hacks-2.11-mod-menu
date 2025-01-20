@@ -1,8 +1,12 @@
-## CRaZy HaX V1
+## CRaZy HaX V1.1
 
 *Features:*
 
 **GLOBAL:**
+
+- Speedhack (Beta)
+
+**BYPASS:**
 
 - Unlimited Slider
 
@@ -10,11 +14,15 @@
 
 - Unlimited Text
 
+**COSMETIC:**
+
 - Icon Hack
 
 **LEVEL:**
 
 - Noclip
+
+- Noclip Fix
 
 - Everything Kills You
 
@@ -37,3 +45,15 @@
 - Longer Editor
 
 - Copy Hack
+
+## Credits:
+
+- FireMario211: His Modding Tutorial
+
+- HJFod: MinHook, Cocos-Headers & gd.h
+
+- Mat: His ImGui-Hook
+
+- Absolllute: MH V5 (Got Some Addresses From There)
+
+- DiOnFire: His Version Of GDHM (Got Some Addresses From There As Well)
