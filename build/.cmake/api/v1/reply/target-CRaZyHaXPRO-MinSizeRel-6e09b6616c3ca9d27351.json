@@ -1,0 +1,243 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "MinSizeRel/CRaZyHaXPRO.dll"
+		},
+		{
+			"path" : "MinSizeRel/CRaZyHaXPRO.lib"
+		},
+		{
+			"path" : "MinSizeRel/CRaZyHaXPRO.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 36,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 37,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG -std:c++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "CRaZyHaXPRO_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/minhook/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/gd.h/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/gd.h"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/cocos2dx"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/cocos2dx/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/cocos2dx/kazmath/include"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/cocos2dx/platform/win32"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/cocos2dx/platform/third_party/win32"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/cocos2dx/platform/third_party/win32/OGLES"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/cocos-headers/extensions"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/imgui-hook"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/TOCRo/Videos/CRaZy Hacks 2.11 mod menu/libs/imgui-hook/imgui"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "imgui-hook::@0902517c013040955445"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "minhook::@f600057be3935523e04f"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "CRaZyHaXPRO::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:X86 /INCREMENTAL:NO",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libs\\minhook\\MinSizeRel\\minhook.x64.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libs\\imgui-hook\\MinSizeRel\\imgui-hook.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "opengl32.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "\"C:\\Users\\TOCRo\\Videos\\CRaZy Hacks 2.11 mod menu\\libs\\cocos-headers\\cocos2dx\\libcocos2d.lib\"",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "\"C:\\Users\\TOCRo\\Videos\\CRaZy Hacks 2.11 mod menu\\libs\\cocos-headers\\extensions\\libExtensions.lib\"",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "CRaZyHaXPRO",
+	"nameOnDisk" : "CRaZyHaXPRO.dll",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/api.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/gui.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

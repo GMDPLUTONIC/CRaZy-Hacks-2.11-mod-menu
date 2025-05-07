@@ -1,10 +1,30 @@
-## CRaZy HaX V1.1
+## CRaZy HaX V1.2.0
 
 *Features:*
+
+**API:**
+
+- Tab Begin
+
+- Tab End
+
+- Text
+
+- Checkbox
+
+- Button
+
+- Input Float
+
+- Input Text
+
+- More Later...
 
 **GLOBAL:**
 
 - Speedhack (Beta)
+
+- Safe Mode
 
 **BYPASS:**
 
@@ -17,6 +37,8 @@
 **COSMETIC:**
 
 - Icon Hack
+
+- Solid Trail
 
 **LEVEL:**
 
@@ -46,9 +68,13 @@
 
 - Copy Hack
 
+**SHORTCUTS:**
+
+- Inject DLL (Beta)
+
 ## Credits:
 
-- FireMario211: His Modding Tutorial
+- FireMario211: His Modding Tutorial (even though barely anything worked from there)
 
 - HJFod: MinHook, Cocos-Headers & gd.h
 

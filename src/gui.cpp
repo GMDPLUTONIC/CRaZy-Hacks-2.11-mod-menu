@@ -2,10 +2,13 @@
 
 void ImGui::StyleColorsCRaZy(ImGuiStyle* dst)
 {
-	// CrAzy Theme style from ImThemes
+ImGui::CreateContext();
+ImGuiIO& io = ImGui::GetIO();
+io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
+
 	ImGuiStyle& style = ImGui::GetStyle();
 	
-	style.Alpha = 0.8999999761581421f;
+	style.Alpha = 0.99f;
 	style.WindowPadding = ImVec2(7.5f, 8.0f);
 	style.WindowRounding = 10.0f;
 	style.WindowBorderSize = 1.0f;
@@ -20,8 +23,8 @@ void ImGui::StyleColorsCRaZy(ImGuiStyle* dst)
 	style.FrameRounding = 5.0f;
 	style.FrameBorderSize = 0.0f;
 	style.ItemSpacing = ImVec2(5.0f, 4.0f);
-	style.ItemInnerSpacing = ImVec2(5.0f, 5.0f);
-	style.CellPadding = ImVec2(4.0f, 2.0f);
+	style.ItemInnerSpacing = ImVec2(0.0f, 0.0f);
+	style.CellPadding = ImVec2(0.0f, 0.0f);
 	style.IndentSpacing = 20.0f;
 	style.ColumnsMinSpacing = 0.0f;
 	style.ScrollbarSize = 12.5f;
@@ -88,4 +91,5 @@ void ImGui::StyleColorsCRaZy(ImGuiStyle* dst)
 	style.Colors[ImGuiCol_NavWindowingHighlight] = ImVec4(1.0f, 1.0f, 1.0f, 0.699999988079071f);
 	style.Colors[ImGuiCol_NavWindowingDimBg] = ImVec4(0.800000011920929f, 0.800000011920929f, 0.800000011920929f, 0.2000000029802322f);
 	style.Colors[ImGuiCol_ModalWindowDimBg] = ImVec4(0.800000011920929f, 0.800000011920929f, 0.800000011920929f, 0.3499999940395355f);
+
 }

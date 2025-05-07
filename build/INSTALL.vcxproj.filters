@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\TOCRo\Videos\CRaZy Hacks 2.11 mod menu\build\CMakeFiles\6ee7c41b824b32ff5740ee0a2430e361\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{CC82AD80-9697-3045-A754-33E4D1E030A7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,8 +1,17 @@
 #include "pch.h"
-#include <imgui-hook.hpp>
-#include <imgui.h>
-#include <string>
-#include "bools.h"
+#include "include.h"
+
+std::string hii() //dll
+{
+    OPENFILENAME ofn;
+    char fileName[MAX_PATH] = "";
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(OPENFILENAME);
+    ofn.lpstrFile = fileName;
+    ofn.nMaxFile = MAX_PATH;
+    if (GetOpenFileName(&ofn))
+        return fileName;
+}
 
 void RenderMain() {
 
@@ -13,37 +22,51 @@ void RenderMain() {
 
     if (menu) {
 
-        ImGui::Begin("CRaZy HaX V1.1:");
+        ImGui::SetNextWindowPos(ImVec2(60, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(150, 200));
+        ImGui::Begin("CRaZy HaX V1.1:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
         ImGui::Text("Mod INFO:");
         if (ImGui::Button("Info", ImVec2(75.0f, 50.0f))) {
-        gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.1", "Close", nullptr, "Made By <cb>GMP</c>")->show();
+/*            auto scene = CCScene::create();
+            auto layer = InfoLayer::create();
+            scene->addChild(layer);
+            CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5f, scene));*/
+            gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.1", "Close", nullptr, "Made By <cb>GMP</c>")->show();
         }
         if (ImGui::Button("Credits", ImVec2(75.0f, 50.0f))) {
             gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.1", "Close", nullptr, "<cr>Absolllute</c>: Megahack v5 (Got Some Addresses There)\n<cd>DiOnFire</c>: GDHM Open-Source (Got Addresses There Too)")->show();
         }
         ImGui::End();
 
-        ImGui::Begin("Global:");
+        ImGui::SetNextWindowPos(ImVec2(210, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(150, 125));
+        ImGui::Begin("Global:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 
         ImGui::Text("Speedhack (Beta)");
         if(ImGui::InputFloat((""), &fSpeed, 1.0f, 10.0f, "%.5f")) {
             CCDirector::sharedDirector()->getScheduler()->setTimeScale(fSpeed);
-        } else {
+        }
+        
+	    if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Changes the game speed."); }
+
+        if (ImGui::Checkbox("Safe Mode", &safeMode))
+            if (safeMode) {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A3B2), "\xE9\x9A\x01\x00\x00\x90\x90", 7, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x1FD40F), "\xE9\x13\x06\x00\x00\x90\x90", 7, NULL);
+            } else {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A3B2), "\x80\xBB\x94\x04\x00\x00\x00", 7, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x1FD40F), "\x83\xB9\x64\x03\x00\x00\x01", 7, NULL);
         }
 
-//        if (ImGui::Checkbox("No Anti-Cheat", &noAntiCheat)) {
-//            if (noAntiCheat) {
-//                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x2E5CA), "\xeb", 1, NULL);
-//                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x2E5F8), "\xeb", 1, NULL);
-//            } else {
-//                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x2E5CA), "\x76", 1, NULL);
-//                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x2E5F8), "\x76", 1, NULL);
-//                }
-//        }
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Disables progress on levels if your are using hacks."); }
 
         ImGui::End();
 
-        ImGui::Begin("Bypass");
+        ImGui::SetNextWindowPos(ImVec2(360, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(190, 150));
+        ImGui::Begin("Bypass", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 
         if (ImGui::Checkbox("Unlimited Slider", &unlimitedSlider)) {
             if (unlimitedSlider) {
@@ -55,6 +78,9 @@ void RenderMain() {
                 }
         }
 
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Removes the limit on the slider."); }
+
         if (ImGui::Checkbox("Any Character", &anyChar)) {
             if (anyChar) {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x21A99), "\x90\x90", 3, NULL);
@@ -62,6 +88,9 @@ void RenderMain() {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x21A99), "\x76", 1, NULL);
                 }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Allows you to type any character in text fields."); }
 
         if (ImGui::Checkbox("Unlimited Text", &unlimitedText)) {
             if (unlimitedText) {
@@ -71,15 +100,14 @@ void RenderMain() {
                 }
         }
 
-//        if (ImGui::Button("Hack Descriptions", ImVec2(150.0f, 50.0f)))
-//        {
-//        gd::FLAlertLayer::create(nullptr, "Hack Descriptions:", "Close", nullptr, "<cr>Unlimited Slider</c>: Removes The Limit On Sliders. <cl>Any Character</c>: Lets You Input Any Character In All Input Areas. <cg>Unlimited Text</c>: Removes The Text Limit In All Input Areas.")->show();
-//        }
-        
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Removes the text limit in text fields."); }
 
         ImGui::End();
 
-        ImGui::Begin("Cosmetic");
+        ImGui::SetNextWindowPos(ImVec2(550, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(200, 150));
+        ImGui::Begin("Cosmetic", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 
         if (ImGui::Checkbox("Icon Hack", &iconHack)) {
             if (iconHack) {
@@ -89,20 +117,38 @@ void RenderMain() {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0xC50A8), "\xe8\x7a\xcd\x19\x00", 5, NULL);
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0xC54BA), "\xe8\x68\xc9\x19\x00", 5, NULL);
                 }
-
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Gives you every icon in the game."); }
+
+        if (ImGui::Checkbox("Solid Trail", &solidTrail)) {
+            if (solidTrail) {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0xAEB0C), "\x90\x90\x90", 3, NULL);
+            } else {
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0xAEB0C), "\x89\x41\x10", 3, NULL);
+                }
+        }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Removes the blending on the wave trail."); }
 
         ImGui::End();
 
+        ImGui::SetNextWindowPos(ImVec2(750, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(225, 250));
+        ImGui::Begin("Level:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 
-        ImGui::Begin("Level:");
         if (ImGui::Checkbox("Noclip", &noclip)) {
             if (noclip) {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\xEB\x37", 2, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20a1dd), "\xeb\x37", 2, NULL);
             } else {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\x8A\x80", 2, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20a1dd), "\x8a\x80", 5, NULL);
             }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Makes the player invincible."); }
 
         if (ImGui::Checkbox("Noclip Fix", &noclipFix)) {
             if (noclipFix) {
@@ -113,6 +159,9 @@ void RenderMain() {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20A1DD), "\x0f\x8B\x21\x01\x00\x00", 6, NULL);
                 }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Fixes bugs with noclip."); }
         
         if (ImGui::Checkbox("Everything Kills You", &everythingKillsYou)) {
             if (everythingKillsYou) {
@@ -122,6 +171,9 @@ void RenderMain() {
                 }
         }
 
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Makes the player die to everything."); }
+
         if (ImGui::Checkbox("ITS ALL BLOCKS", &itsAllBlocks)) {
             if (itsAllBlocks) {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x20456D), "\x31\xc0\x83\x7b\x34\x00\xba\x07\x00\x00\x00\x0f\x44\xc2\x90", 15, NULL);
@@ -130,13 +182,19 @@ void RenderMain() {
                 }
         }
 
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Makes every object function like a block."); }
+
         if (ImGui::Checkbox("Theres No ESCAPE", &theresNoEscape)) {
             if (everythingKillsYou) {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x1E644C), "\x90\x90\x90\x90\x90", 5, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x1E660C), "\xEB\x0B", 2, NULL);
             } else {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x1E644C), "\xe8\xbf\x73\x02\x00", 5, NULL);
+                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x1E660C), "\x6a\x00", 2, NULL);
                 }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Doesn't let the player esc a level."); }
 
         if (ImGui::Checkbox("Accurate Percentage", &accuratePercentage)) {
             if (accuratePercentage) {
@@ -150,17 +208,25 @@ void RenderMain() {
                 }
         }
 
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Adds decimals to the percentage count."); }
+
         ImGui::End();
 
-        ImGui::Begin("Creator:");
+        ImGui::SetNextWindowPos(ImVec2(975, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(200, 250));
+        ImGui::Begin("Creator:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
 
         if (ImGui::Checkbox("No Editor Kick", &noEditorKick)) {
             if (noEditorKick) {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x15FC2E), "\xeb", 1, NULL);
-            } else { // noclip = False
+            } else {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x15FC2E), "\x74", 1, NULL);
                 }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Doesn't kick you from a high object level."); }
 
         if (ImGui::Checkbox("Unlimited Objects", &unlimitedObj)) {
             if (unlimitedObj) {
@@ -188,6 +254,9 @@ void RenderMain() {
                 }
         }
 
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Lets you place an unlimited amount of objects in the editor."); }
+
         if (ImGui::Checkbox("Verify Hack", &verifyHack)) {
             if (verifyHack) {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x71D48), "\xeb", 1, NULL);
@@ -196,18 +265,8 @@ void RenderMain() {
                 }
         }
 
-        if (ImGui::Checkbox("Every Song", &everySong)) {
-            if (everySong) {
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174407), "\x90\x90", 2, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174411), "\x90\x90\x90", 3, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174456), "\x90\x90", 2, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174460), "\x90\x90\x90", 3, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174407), "\x74\x2f", 2, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174411), "\x0f\x4f\xc6", 3, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174456), "\x74\x2f", 2, NULL);
-                WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x174460), "\x0f\x4f\xc6", 3, NULL);
-                }
-        }
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Automatically verifies your levels for you."); }
 
         if (ImGui::Checkbox("Longer Editor", &longerEditor)) {
             if (longerEditor) {
@@ -218,6 +277,9 @@ void RenderMain() {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x8FA4D), "\x80\x67\x6a\x48", 4, NULL);
                 }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Increases the editor size by a factor of 128."); }
 
         if (ImGui::Checkbox("Copy Hack", &copyHack)) {
             if (copyHack) {
@@ -230,24 +292,52 @@ void RenderMain() {
                 WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(gd::base + 0x176FE5), "\x0f\x95\xc0", 3, NULL);
                 }
         }
+
+        if (ImGui::IsItemHovered(ImGuiHoveredFlags_AllowWhenDisabled)) {
+            ImGui::SetTooltip("Lets you copy any level in the game."); }
         
         ImGui::End();
 
+        ImGui::SetNextWindowPos(ImVec2(1175, 55), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(200, 150));
+        ImGui::Begin("Shortcuts:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
+
+        if (ImGui::Button("Inject Dll (Beta)")) {
+            std::string stringpath = hii();
+            const char* DllPath = stringpath.c_str();
+            
+            // Open a handle to target process
+            HWND hWnd = FindWindow(0, "2.1 GDPS");
+                DWORD proccess_ID;
+                GetWindowThreadProcessId(hWnd, &proccess_ID);
+                HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, proccess_ID);
+                LPVOID pDllPath = VirtualAllocEx(hProcess, 0, strlen(DllPath) + 1,
+                MEM_COMMIT, PAGE_READWRITE);
+                WriteProcessMemory(hProcess, pDllPath, (LPVOID)DllPath,
+                strlen(DllPath) + 1, 0);
+                HANDLE hLoadThread = CreateRemoteThread(hProcess, 0, 0,
+                (LPTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandleA("Kernel32.dll"), "LoadLibraryA"), pDllPath, 0, 0);
+                WaitForSingleObject(hLoadThread, INFINITE);
+                VirtualFreeEx(hProcess, pDllPath, strlen(DllPath) + 1, MEM_RELEASE);
+            
+        }
+
+        ImGui::End();
         }
     }
 
 DWORD WINAPI my_thread(void* hModule) {
+
     ImGuiHook::setRenderFunction(RenderMain);
     ImGuiHook::setToggleCallback([]() {
-        menu = !menu; // Toggles imgui from showing (Press K to toggle)
+        menu = !menu;
     });
     if (MH_Initialize() == MH_OK) {
         ImGuiHook::setupHooks([](void* target, void* hook, void** trampoline) {
-            MH_CreateHook(target, hook, trampoline); // Sets up hook for imgui
+            MH_CreateHook(target, hook, trampoline);
         });
         MH_EnableHook(MH_ALL_HOOKS);
     } else {
-        // Comment this if this causes crashes.
         std::cout << "MinHook failed to load! Unloading..." << std::endl;
         FreeLibraryAndExitThread(reinterpret_cast<HMODULE>(hModule), 0);
     }
