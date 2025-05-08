@@ -24,17 +24,17 @@ void RenderMain() {
 
         ImGui::SetNextWindowPos(ImVec2(60, 55), ImGuiCond_Appearing);
         ImGui::SetNextWindowSize(ImVec2(150, 200));
-        ImGui::Begin("CRaZy HaX V1.1:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
+        ImGui::Begin("CRaZy HaX V1.2.0:", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
         ImGui::Text("Mod INFO:");
         if (ImGui::Button("Info", ImVec2(75.0f, 50.0f))) {
 /*            auto scene = CCScene::create();
             auto layer = InfoLayer::create();
             scene->addChild(layer);
             CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5f, scene));*/
-            gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.1", "Close", nullptr, "Made By <cb>GMP</c>")->show();
+            gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.2.0", "Close", nullptr, "Made By <cb>GMP</c>")->show();
         }
         if (ImGui::Button("Credits", ImVec2(75.0f, 50.0f))) {
-            gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.1", "Close", nullptr, "<cr>Absolllute</c>: Megahack v5 (Got Some Addresses There)\n<cd>DiOnFire</c>: GDHM Open-Source (Got Addresses There Too)")->show();
+            gd::FLAlertLayer::create(nullptr, "CRaZy HaX V1.2.0", "Close", nullptr, "<cr>Absolllute</c>: Megahack v5 (Got Some Addresses There)\n<cd>DiOnFire</c>: GDHM Open-Source (Got Addresses There Too)")->show();
         }
         ImGui::End();
 
